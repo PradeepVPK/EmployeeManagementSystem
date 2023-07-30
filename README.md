@@ -1,14 +1,12 @@
-#Employee Management App
+Employee Management App
 =======================
 
-![App Screenshot](https://chat.openai.com/c/app_screenshot.png)
-
-#Description
+Description
 -----------
 
 This is an Employee Management App built using Angular, Spring Boot, and MySQL. The application allows users to perform various employee management tasks, including adding, editing, and deleting employee records.
 
-#Features
+Features
 --------
 
 -   User-friendly interface to manage employee records efficiently.
@@ -25,7 +23,7 @@ This is an Employee Management App built using Angular, Spring Boot, and MySQL. 
 -   Spring Boot
 -   MySQL
 
-#Installation
+Installation
 ------------
 
 1.  Clone the repository:
