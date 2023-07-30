@@ -1,0 +1,14 @@
+/* styles.css (or your custom CSS file) */
+.no-wrap {
+    white-space: nowrap;
+  }
+.left{
+  text-align: left;
+}
+/* styles.css (or your custom CSS file) */
+/* Red outline for invalid form control */
+.is-invalid .form-control {
+  border-color: red;
+}
+
+  

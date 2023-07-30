@@ -1,0 +1,103 @@
+<!-- auth.component.html -->
+<div class="container">
+  <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); margin: auto;">
+    <div class="card-body text-center">
+      <div class="card-title">
+        <h3>Employee Login</h3>
+      </div>
+      <br>
+      <!-- Login Form -->
+      <form *ngIf="isLogin" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+        <div class="form-group row">
+          <label for="email" class="col-md-1 col-sm-3 col-form-label no-wrap">Email</label>
+          <div class="col-md-11 col-sm-9 ">
+            <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email" [class.is-invalid]="loginForm.controls['email']?.invalid && (loginForm.controls['email']?.dirty || loginForm.controls['email']?.touched)">
+          </div>
+          <div *ngIf="loginForm.controls['email']?.invalid && (loginForm.controls['email']?.dirty || loginForm.controls['email']?.touched)" class="text-danger ">
+            <div *ngIf="loginForm.controls['email']?.errors?.['required']">Email is required.</div>
+            <div *ngIf="loginForm.controls['email']?.errors?.['email']">Invalid email format.</div>
+          </div>
+        </div>
+        <br>
+        <div class="form-group row">
+          <label for="password" class="col-md-1 col-sm-3 col-form-label no-wrap">Password</label>
+          <div class="col-md-11 col-sm-9 ">
+            <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password" [class.is-invalid]="loginForm.controls['email']?.invalid && (loginForm.controls['email']?.dirty || loginForm.controls['email']?.touched)" [(ngModel)]="firstName">
+            <!-- <label for="passwordH" class="tooltip form-text text-muted">
+              Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+            </label> -->
+          </div>
+          <div *ngIf="loginForm.controls['password']?.invalid && (loginForm.controls['password']?.dirty || loginForm.controls['password']?.touched)" class="text-danger ">
+            <div *ngIf="loginForm.controls['password']?.errors?.['required']">Password is required.</div>
+          </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Sign In</button>
+        <br>
+        <small class="form-text text-muted">
+          Don't have an account?
+        </small>
+        <!-- Toggle to Registration Form -->
+        <a href="#" style="text-decoration: none;" (click)="toggleForm($event)">Sign Up</a>
+        <br>Or<br>
+        <button class="btn btn-light" (click)="onGoogleLogin()" > <img src="../assets/images/google.png" width="30px" height="30px" > </button>
+        <button class="btn btn-light" (click)="onGoogleLogin()" style="margin-left: 10px; "> <img src="../assets/images/github-logo.png" width="30px" height="30px" > </button>
+        <button class="btn btn-light" (click)="onGoogleLogin()" style="margin-left: 10px; "> <img src="../assets/images/facebook.png" width="30px" height="30px" > </button>
+     
+        <!-- Other buttons for login -->
+        <!-- ... -->
+      </form>
+
+      <!-- Registration Form -->
+       <!-- Registration Form -->
+       <form *ngIf="!isLogin" [formGroup]="registrationForm" (ngSubmit)="onRegistrationSubmit()">
+        <div class="form-group row">
+          <label for="firstName" class="col-sm-3 col-form-label no-wrap">First Name</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="Enter first name" [class.is-invalid]="registrationForm.get('firstName')?.invalid && registrationForm.get('firstName')?.touched">
+            <div *ngIf="registrationForm.get('firstName')?.invalid && registrationForm.get('firstName')?.touched"
+                 class="text-danger left">
+              <div *ngIf="registrationForm.get('firstName')?.errors?.['required']">First Name is required.</div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="form-group row">
+          <label for="lastName" class="col-sm-3 col-form-label no-wrap">Last Name</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Enter last name" [class.is-invalid]="registrationForm.get('lastName')?.invalid && registrationForm.get('lastName')?.touched">
+            <div *ngIf="registrationForm.get('lastName')?.invalid && registrationForm.get('lastName')?.touched"
+                 class="text-danger left">
+              <div  *ngIf="registrationForm.get('lastName')?.errors?.['required']">Last Name is required.</div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="form-group row">
+          <label for="emailId" class="col-sm-3 col-form-label no-wrap">Email</label>
+          <div class="col-sm-9">
+            <input type="email" class="form-control" id="emailId" formControlName="emailId" placeholder="Enter email" [class.is-invalid]="registrationForm.get('emailId')?.invalid && registrationForm.get('emailId')?.touched" [(ngModel)]="employee.emailId">
+            <div *ngIf="registrationForm.get('emailId')?.invalid && registrationForm.get('emailId')?.touched"
+                 class="text-danger left">
+              <div *ngIf="registrationForm.get('emailId')?.errors?.['required']">Email is required.</div>
+              <div *ngIf="registrationForm.get('emailId')?.errors?.['email']">Invalid email format.</div>
+            </div>
+          </div>
+        </div>
+        <!-- Add other form elements for registration -->
+        <!-- ... -->
+        <br>
+        <button type="submit" class="btn btn-primary">Sign Up</button> 
+        <br>
+        <small class="form-text text-muted">
+          Already have an account?
+        </small>
+        <!-- Toggle to Login Form -->
+        <a href="#" style="text-decoration: none;" (click)="toggleForm($event)">Sign In</a>
+        <br>
+        <!-- Other buttons for registration -->
+        <!-- ... -->
+      </form>
+    </div>
+  </div>
+</div>
